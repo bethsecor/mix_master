@@ -12,6 +12,5 @@ RSpec.feature "User can delete an artist" do
 
     expect(current_path).to eq artists_path
     expect(page).not_to have_link(artist.name, artist_path(artist))
-    save_and_open_page
   end
 end
