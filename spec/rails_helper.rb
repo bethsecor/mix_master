@@ -5,6 +5,28 @@ require File.expand_path('../../config/environment', __FILE__)
 abort("The Rails environment is running in production mode!") if Rails.env.production?
 require 'spec_helper'
 require 'rspec/rails'
+require 'capybara/rails'
+
+Shoulda::Matchers.configure do |config|
+  config.integrate do |with|
+    with.test_framework :rspec
+    with.library :rails
+  end
+end
+
+def three_artists
+  {
+    "Sara Bareilles" => "http://bloximages.newyork1.vip.townnews.com/stltoday.com/content/tncms/assets/v3/editorial/8/eb/8eb9d9ef-59bd-58f8-9209-2b927bb1cb8a/52124c1f5849c.preview-620.png",
+    "Ingrid Michaelson" => "http://cps-static.rovicorp.com/3/JPG_400/MI0003/719/MI0003719269.jpg?partner=allrovi.com",
+    "Gin Wigmore" => "http://s1.ticketm.net/tm/en-nz/dbimages/206805a.jpg"
+  }
+end
+
+def create_three_artists
+  three_artists.each do |artist_name, artist_image_path|
+    Artist.create({name: artist_name, image_path: artist_image_path})
+  end
+end
 # Add additional requires below this line. Rails is not loaded until this point!
 
 # Requires supporting ruby files with custom matchers and macros, etc, in
