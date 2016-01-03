@@ -10,8 +10,6 @@ class PlaylistsController < ApplicationController
   end
 
   def create
-    # @playlist = Playlist.create(playlist_params)
-    # redirect_to @playlist
     @playlist = Playlist.new(playlist_params)
     if @playlist.save
       redirect_to @playlist
@@ -27,9 +25,6 @@ class PlaylistsController < ApplicationController
   end
 
   def update
-    # @playlist = Playlist.update(params[:id], playlist_params)
-    # redirect_to @playlist
-
     @playlist = Playlist.update(params[:id], playlist_params)
     if @playlist.save
       redirect_to @playlist
